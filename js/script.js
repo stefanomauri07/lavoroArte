@@ -83,7 +83,7 @@ async function loadHeroBackground() {
   const imageUrl = await fetchWikiImage('Palazzo Montecitorio', 1920);
 
   if (imageUrl) {
-    heroBg.style.background = `linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(22, 33, 62, 0.85) 100%), url("${imageUrl}") center/cover no-repeat fixed`;
+    heroBg.style.background = `linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(22, 33, 62, 0.5) 100%), url("${imageUrl}") center/cover no-repeat fixed`;
   } else {
     heroBg.style.background = fallback;
   }
