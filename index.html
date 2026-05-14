@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PoliticaPlay - Scopri la politica giocando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">POLI<span>TIKTOK</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Apri menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#topic">Topic</a></li>
+        <li><a href="#sfide">Sfide</a></li>
+        <li><a href="#come-funziona">Come Funziona</a></li>
+        <li><a href="#chi-siamo">Chi Siamo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <h1 class="hero-title">Scopri l'Italia <span class="highlight">giocando</span></h1>
+        <p class="hero-subtitle">Quiz e sfide per imparare la storia politica e culturale italiana divertendoti. Da solo o in squadra!</p>
+        <a href="#sfide" class="btn btn-primary">INIZIA A GIOCARE</a>
+      </div>
+    </section>
+
+    <!-- Topic in Evidenza -->
+    <section id="topic" class="section section-topics">
+      <div class="container">
+        <h2 class="section-title">TOPIC <span class="highlight">IN EVIDENZA</span></h2>
+        <p class="section-subtitle">Esplora i temi che hanno segnato l'Italia</p>
+        <div class="topics-carousel" id="topicsCarousel">
+          <!-- 10 card generate da JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sfide / Giochi -->
+    <section id="sfide" class="section section-games">
+      <div class="container">
+        <h2 class="section-title">LE NOSTRE <span class="highlight">SFIDE</span></h2>
+        <div class="games-grid">
+          <a href="games/quiz/index.html" class="game-card">
+            <div class="game-card-image">
+              <div class="game-icon">🏛️</div>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">QUIZ POLITICA</h3>
+              <p class="game-card-desc">Competi con gli amici su storia e politica italiana</p>
+              <span class="game-card-btn">SCOPRI DI PIÙ</span>
+            </div>
+          </a>
+          <a href="games/fake-news/index.html" class="game-card">
+            <div class="game-card-image">
+              <div class="game-icon">🔍</div>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">FAKE O REALTÀ</h3>
+              <p class="game-card-desc">Riesci a distinguere le fake news dalla verità?</p>
+              <span class="game-card-btn">SCOPRI DI PIÙ</span>
+            </div>
+          </a>
+          <a href="games/reels/index.html" class="game-card">
+            <div class="game-card-image">
+              <div class="game-icon">🎬</div>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">STAY TUNED</h3>
+              <p class="game-card-desc">La piattaforma reels per i politici è in arrivo</p>
+              <span class="game-card-btn">SCOPRI DI PIÙ</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Come Funziona -->
+    <section id="come-funziona" class="section section-how">
+      <div class="container">
+        <h2 class="section-title">COME <span class="highlight">FUNZIONA</span></h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">SCEGLI UNA SFIDA</h3>
+            <p class="step-desc">Quiz politica o fake news: scegli la tua sfida</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">GIOCA DA SOLO O IN SQUADRA</h3>
+            <p class="step-desc">Crea una stanza e invita i tuoi amici</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">SCALA LA CLASSIFICA</h3>
+            <p class="step-desc">Accumula punti e diventa un esperto di politica</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chi Siamo -->
+    <section id="chi-siamo" class="section section-about">
+      <div class="container">
+        <div class="about-content">
+          <h2 class="section-title">LA NOSTRA <span class="highlight">MISSIONE</span></h2>
+          <p class="about-text">PoliTikTok nasce per risolvere il problema della disinformazione giovanile cercando di rendere la politica e la cultura attuali interessanti. PoliTikTok inoltre si impegna a essere uno spazio di libero dibattito e accrescimento personale.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2025 PoliticaPlay. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/topics-data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

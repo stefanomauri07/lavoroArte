@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Politica - PoliticaPlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="../../index.html" class="logo">POLITICA<span>PLAY</span></a>
+      <a href="../../index.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.875rem;">Torna alla Home</a>
+    </nav>
+  </header>
+
+  <main class="quiz-container">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="quiz-screen">
+      <div class="quiz-loading">
+        <div class="quiz-spinner"></div>
+        <p class="quiz-loading-text">Preparazione quiz...</p>
+      </div>
+    </div>
+
+    <!-- Setup Screen -->
+    <div id="setupScreen" class="quiz-screen">
+      <div class="quiz-setup">
+        <h1 class="quiz-setup-title">QUIZ <span class="highlight">POLITICA</span></h1>
+        <p class="quiz-setup-subtitle">Configura la tua partita e sfida i tuoi amici!</p>
+
+        <form id="quizSetupForm">
+          <!-- Number of Teams -->
+          <div class="quiz-form-group">
+            <label class="quiz-form-label" for="teamCount">Numero Squadre</label>
+            <select id="teamCount" class="quiz-form-select" required>
+              <option value="2">2 Squadre</option>
+              <option value="3">3 Squadre</option>
+              <option value="4">4 Squadre</option>
+            </select>
+          </div>
+
+          <!-- Team Names -->
+          <div id="teamNamesContainer" class="quiz-form-group">
+            <label class="quiz-form-label">Nomi Squadre</label>
+            <div class="quiz-teams-input">
+              <div class="quiz-team-input">
+                <span class="quiz-team-number">1</span>
+                <input type="text" class="quiz-form-input team-name-input" placeholder="Nome Squadra 1" required>
+              </div>
+              <div class="quiz-team-input">
+                <span class="quiz-team-number">2</span>
+                <input type="text" class="quiz-form-input team-name-input" placeholder="Nome Squadra 2" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="quiz-form-group">
+            <label class="quiz-form-label" for="category">Categoria</label>
+            <select id="category" class="quiz-form-select" required>
+              <option value="Misto">Misto (Tutte le categorie)</option>
+              <option value="Storia">Storia d'Italia</option>
+              <option value="Presidenti">Presidenti della Repubblica</option>
+              <option value="Partiti">Partiti Politici</option>
+              <option value="Costituzione">Costituzione Italiana</option>
+            </select>
+          </div>
+
+          <!-- Number of Questions -->
+          <div class="quiz-form-group">
+            <label class="quiz-form-label" for="questionCount">Numero Domande</label>
+            <select id="questionCount" class="quiz-form-select" required>
+              <option value="10">10 Domande</option>
+              <option value="15">15 Domande</option>
+              <option value="20">20 Domande</option>
+            </select>
+          </div>
+
+          <button type="submit" class="quiz-btn-start">INIZIA QUIZ</button>
+
+          <!-- Scoring Info -->
+          <div class="scoring-info">
+            <h3>COME FUNZIONA IL PUNTEGGIO</h3>
+            <div class="scoring-grid">
+              <div class="scoring-item">
+                <span class="scoring-points">+100</span>
+                <span class="scoring-label">Risposta Corretta</span>
+              </div>
+              <div class="scoring-item">
+                <span class="scoring-points">+50</span>
+                <span class="scoring-label">Bonus Velocità (&lt;3s)</span>
+              </div>
+              <div class="scoring-item">
+                <span class="scoring-points">+25</span>
+                <span class="scoring-label">Bonus Rapido (&lt;5s)</span>
+              </div>
+            </div>
+            <p class="scoring-note">Più rispondi velocemente, più punti guadagni!</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="quiz-screen">
+      <div class="quiz-layout">
+        <div class="quiz-main">
+          <!-- Turn Indicator -->
+          <div class="turn-indicator">
+            <span class="turn-label">TURNO DI</span>
+            <span id="currentTeamName" class="turn-team-name">Squadra 1</span>
+          </div>
+
+          <!-- Game Info Bar -->
+          <div class="quiz-game-header">
+            <span id="questionCounter" class="quiz-question-counter">Domanda 1/10</span>
+            <span id="currentScore" class="quiz-score">0 punti</span>
+          </div>
+
+          <!-- Timer -->
+          <div class="quiz-timer-container">
+            <div id="timerBar" class="quiz-timer"></div>
+          </div>
+
+          <!-- Question -->
+          <div class="quiz-question">
+            <p id="questionText" class="quiz-question-text">Caricamento domanda...</p>
+          </div>
+
+          <!-- Options -->
+          <div id="optionsContainer" class="quiz-options">
+            <!-- Options will be inserted here by JS -->
+          </div>
+
+          <!-- Feedback -->
+          <div id="feedbackContainer" class="quiz-feedback" style="display: none;"></div>
+        </div>
+
+        <!-- Live Leaderboard Sidebar -->
+        <aside class="quiz-sidebar">
+          <h3 class="sidebar-title">Classifica</h3>
+          <div id="liveLeaderboard" class="live-leaderboard">
+            <!-- Teams will be inserted here by JS -->
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="quiz-screen">
+      <div class="quiz-results">
+        <h2 class="quiz-results-title">RISULTATI <span class="highlight">FINALI</span></h2>
+
+        <!-- Rankings -->
+        <div id="rankingsContainer" class="quiz-rankings">
+          <!-- Rankings will be inserted here by JS -->
+        </div>
+
+        <!-- Review Section -->
+        <div class="quiz-review">
+          <h3 class="quiz-review-title">Riepilogo Domande</h3>
+          <div id="reviewContainer">
+            <!-- Review items will be inserted here by JS -->
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="quiz-actions">
+          <button id="playAgainBtn" class="quiz-btn quiz-btn-primary">GIOCA ANCORA</button>
+          <a href="../../index.html" class="quiz-btn quiz-btn-secondary">TORNA ALLA HOME</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2025 PoliticaPlay. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/quiz-politica-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

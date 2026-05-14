@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake o Realtà - PoliticaPlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="../../index.html" class="logo">POLITICA<span>PLAY</span></a>
+      <a href="../../index.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.875rem;">Torna alla Home</a>
+    </nav>
+  </header>
+
+  <main class="fake-container">
+    <div id="loadingScreen" class="fake-screen">
+      <div class="fake-loading">
+        <div class="fake-spinner"></div>
+        <p class="fake-loading-text">Preparazione gioco...</p>
+      </div>
+    </div>
+
+    <div id="setupScreen" class="fake-screen">
+      <div class="fake-setup">
+        <h1 class="fake-setup-title">FAKE O <span class="highlight">REALTÀ</span></h1>
+        <p class="fake-setup-subtitle">Riesci a distinguere la verità dalla menzogna?</p>
+
+        <form id="fakeSetupForm">
+          <div class="fake-form-group">
+            <label class="fake-form-label">Modalità di Gioco</label>
+            <div class="mode-toggle">
+              <button type="button" class="mode-btn active" data-mode="single">
+                <span class="mode-icon">👤</span>
+                <span class="mode-text">Giocatore Singolo</span>
+              </button>
+              <button type="button" class="mode-btn" data-mode="team">
+                <span class="mode-icon">👥</span>
+                <span class="mode-text">Squadre</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="teamSetupSection" class="fake-form-group" style="display: none;">
+            <label class="fake-form-label" for="teamCount">Numero Squadre</label>
+            <select id="teamCount" class="fake-form-select">
+              <option value="2">2 Squadre</option>
+              <option value="3">3 Squadre</option>
+              <option value="4">4 Squadre</option>
+            </select>
+            <div id="teamNamesContainer" class="fake-teams-input">
+              <div class="fake-team-input">
+                <span class="fake-team-number">1</span>
+                <input type="text" class="fake-form-input team-name-input" placeholder="Nome Squadra 1">
+              </div>
+              <div class="fake-team-input">
+                <span class="fake-team-number">2</span>
+                <input type="text" class="fake-form-input team-name-input" placeholder="Nome Squadra 2">
+              </div>
+            </div>
+          </div>
+
+          <div class="fake-form-group">
+            <label class="fake-form-label" for="questionCount">Numero Affermazioni</label>
+            <select id="questionCount" class="fake-form-select" required>
+              <option value="10">10 Affermazioni</option>
+              <option value="15">15 Affermazioni</option>
+              <option value="20">20 Affermazioni</option>
+            </select>
+          </div>
+
+          <div class="fake-form-group">
+            <label class="fake-form-label" for="category">Categoria</label>
+            <select id="category" class="fake-form-select" required>
+              <option value="Misto">Misto (Tutte le categorie)</option>
+              <option value="Storico">Storico</option>
+              <option value="Dati">Dati e Numeri</option>
+              <option value="Citazioni">Citazioni</option>
+            </select>
+          </div>
+
+          <button type="submit" class="fake-btn-start">INIZIA GIOCO</button>
+
+          <div class="scoring-info">
+            <h3>COME FUNZIONA</h3>
+            <div class="scoring-grid">
+              <div class="scoring-item">
+                <span class="scoring-points">+100</span>
+                <span class="scoring-label">Risposta Corretta</span>
+              </div>
+              <div class="scoring-item">
+                <span class="scoring-points">+50</span>
+                <span class="scoring-label">Bonus Velocità (&lt;3s)</span>
+              </div>
+              <div class="scoring-item">
+                <span class="scoring-points">0</span>
+                <span class="scoring-label">Tempo Scaduto / Errore</span>
+              </div>
+            </div>
+            <p class="scoring-note">Hai 10 secondi per ogni affermazione. Più sei veloce, più punti guadagni!</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="gameScreen" class="fake-screen">
+      <div class="fake-layout">
+        <div class="fake-main">
+          <div id="turnIndicator" class="turn-indicator" style="display: none;">
+            <span class="turn-label">TURNO DI</span>
+            <span id="currentTeamName" class="turn-team-name">Squadra 1</span>
+          </div>
+
+          <div class="fake-game-header">
+            <span id="questionCounter" class="fake-question-counter">Affermazione 1/10</span>
+            <span id="currentScore" class="fake-score">0 punti</span>
+          </div>
+
+          <div class="fake-timer-container">
+            <div id="timerBar" class="fake-timer"></div>
+          </div>
+
+          <div class="fake-statement-card">
+            <p id="statementText" class="fake-statement-text">Caricamento affermazione...</p>
+          </div>
+
+          <div class="fake-buttons">
+            <button id="fakeBtn" class="fake-choice-btn btn-fake">
+              <span class="choice-icon">✖</span>
+              <span class="choice-text">FAKE</span>
+            </button>
+            <button id="realBtn" class="fake-choice-btn btn-real">
+              <span class="choice-icon">✔</span>
+              <span class="choice-text">REALTÀ</span>
+            </button>
+          </div>
+
+          <div id="feedbackContainer" class="fake-feedback" style="display: none;"></div>
+        </div>
+
+        <aside class="fake-sidebar">
+          <h3 class="sidebar-title">Classifica</h3>
+          <div id="liveLeaderboard" class="live-leaderboard"></div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="resultsScreen" class="fake-screen">
+      <div class="fake-results">
+        <h2 class="fake-results-title">RISULTATI <span class="highlight">FINALI</span></h2>
+
+        <div id="summaryCard" class="summary-card">
+          <div class="summary-circle">
+            <span id="summaryPercent" class="summary-percent">0%</span>
+            <span class="summary-label">Corrette</span>
+          </div>
+          <p id="summaryMessage" class="summary-message">Ottimo lavoro!</p>
+        </div>
+
+        <div id="rankingsContainer" class="fake-rankings" style="display: none;"></div>
+
+        <div class="fake-review">
+          <h3 class="fake-review-title">Riepilogo Affermazioni</h3>
+          <div id="reviewContainer"></div>
+        </div>
+
+        <div class="fake-actions">
+          <button id="playAgainBtn" class="fake-btn fake-btn-primary">GIOCA ANCORA</button>
+          <a href="../../index.html" class="fake-btn fake-btn-secondary">TORNA ALLA HOME</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2025 PoliticaPlay. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/fake-news-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
