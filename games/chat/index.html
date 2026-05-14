@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - PoliTikTok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="../../index.html" class="logo">POLI<span>TIKTOK</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../../index.html#topic">Topic</a></li>
+        <li><a href="../../index.html#sfide">Sfide</a></li>
+        <li><a href="index.html" class="active">Chat</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="chat-page">
+    <div class="chat-layout">
+      <div class="chat-main">
+        <div class="chat-header">
+          <h1>CHAT <span class="highlight">PUBBLICA</span></h1>
+          <p class="chat-header-sub">Discutiamo di politica, attualità e cultura. Rispetta gli altri.</p>
+        </div>
+
+        <div id="activeChannelHeader" class="active-channel-header">
+          <!-- Active channel header rendered by JS -->
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+          <!-- Messages rendered by JS -->
+        </div>
+
+        <div class="chat-input-area">
+          <div class="chat-input-wrapper">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Scrivi un messaggio..." maxlength="500" autocomplete="off">
+            <button id="chatSendBtn" class="chat-send-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <p class="chat-input-hint">I messaggi non vengono salvati. Scrivi come "Anonimo".</p>
+        </div>
+      </div>
+
+      <aside class="chat-sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">TOPIC DEL GIORNO</h3>
+          <div id="topicList" class="topic-list">
+            <!-- Topics rendered by JS -->
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">ONLINE ORA</h3>
+          <div class="online-users">
+            <span class="online-dot"></span>
+            <span class="online-count">24 utenti</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2025 PoliticaPlay. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
